@@ -16,7 +16,7 @@
     <div style="border-style: outset">
       Uploaded by: {{ image.author }} on {{ image.published | date: "medium" }}
       <hr />
-      <div id="description" [innerHTML]="image.description"></div>
+      <div>This is a sample description that can be on image</div>
       <hr />
       <div>
         <p *ngIf="image.tags.length < 100" class="text">
