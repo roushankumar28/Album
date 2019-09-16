@@ -1,0 +1,33 @@
+<h1>Image Gallery</h1>
+<div
+  class="container-all"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+  [scrollWindow]="false"
+  style="height: 500px; overflow-y: scroll;"
+>
+  <div class="container" *ngFor="let image of images">
+    <div class="descrep">
+      <img [src]="image.media.m" [alt]="image.title" />
+      <div class="overlay">{{ image.title }}</div>
+    </div>
+    <div style="border-style: outset">
+      Uploaded by: {{ image.author }} on {{ image.published | date: "medium" }}
+      <hr />
+      <div id="description" [innerHTML]="image.description"></div>
+      <hr />
+      <div>
+        <p *ngIf="image.tags.length < 100" class="text">
+          {{ image.tags }}
+        </p>
+        <p *ngIf="image.tags.length > 100" class="text">
+          {{ image.tags | slice: 0:90 }}...<a title="{{ image.tags }}"
+            >Read more</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
